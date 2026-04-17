@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "H:/workspace/program/windows_stm32_project/projects/01_blink_led",
+    "cmake.environment": {
+        "PATH": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin;${env:PATH}"
+    }
+}

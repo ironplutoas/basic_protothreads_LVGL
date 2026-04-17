@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"H:/workspace/program/windows_stm32_project/build/root-stage5/cmake_install.cmake",
+		"H:/workspace/program/windows_stm32_project/build/root-stage5/project/main/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

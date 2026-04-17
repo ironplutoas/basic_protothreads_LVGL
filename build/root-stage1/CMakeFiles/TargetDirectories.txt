@@ -1,0 +1,5 @@
+H:/workspace/program/windows_stm32_project/build/root-stage1/CMakeFiles/edit_cache.dir
+H:/workspace/program/windows_stm32_project/build/root-stage1/CMakeFiles/rebuild_cache.dir
+H:/workspace/program/windows_stm32_project/build/root-stage1/project/main/CMakeFiles/stm32_lvgl_learning.dir
+H:/workspace/program/windows_stm32_project/build/root-stage1/project/main/CMakeFiles/edit_cache.dir
+H:/workspace/program/windows_stm32_project/build/root-stage1/project/main/CMakeFiles/rebuild_cache.dir

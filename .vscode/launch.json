@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "STM32 Debug (ST-Link)",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "raw",
+            "serverType": "openocd",
+            "serverPath": "openocd",
+            "serverArgs": [
+                "-f",
+                "${workspaceFolder}/tools/openocd-stlink.cfg"
+            ],
+            "svdFile": "${workspaceFolder}/resources/STM32F407.svd",
+            "device": "STM32F407VG",
+            "rtos": "CortexDebug"
+        },
+        {
+            "name": "STM32 Attach (ST-Link)",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.launchTargetPath}",
+            "request": "attach",
+            "type": "cortex-debug",
+            "showDevDebugOutput": "raw",
+            "serverType": "openocd",
+            "serverPath": "openocd",
+            "serverArgs": [
+                "-f",
+                "${workspaceFolder}/tools/openocd-stlink.cfg"
+            ],
+            "svdFile": "${workspaceFolder}/resources/STM32F407.svd",
+            "device": "STM32F407VG"
+        }
+    ]
+}

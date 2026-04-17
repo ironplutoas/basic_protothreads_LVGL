@@ -1,0 +1,87 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Stage 1 (Default)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/root-default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/tools/cmake-toolchain.cmake",
+        "APP_STAGE": "1"
+      }
+    },
+    {
+      "name": "stage1",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/root-stage1",
+      "cacheVariables": {
+        "APP_STAGE": "1"
+      }
+    },
+    {
+      "name": "stage2",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/root-stage2",
+      "cacheVariables": {
+        "APP_STAGE": "2"
+      }
+    },
+    {
+      "name": "stage3",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/root-stage3",
+      "cacheVariables": {
+        "APP_STAGE": "3"
+      }
+    },
+    {
+      "name": "stage4",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/root-stage4",
+      "cacheVariables": {
+        "APP_STAGE": "4"
+      }
+    },
+    {
+      "name": "stage5",
+      "inherits": "default",
+      "binaryDir": "${sourceDir}/build/root-stage5",
+      "cacheVariables": {
+        "APP_STAGE": "5"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    },
+    {
+      "name": "stage1",
+      "configurePreset": "stage1"
+    },
+    {
+      "name": "stage2",
+      "configurePreset": "stage2"
+    },
+    {
+      "name": "stage3",
+      "configurePreset": "stage3"
+    },
+    {
+      "name": "stage4",
+      "configurePreset": "stage4"
+    },
+    {
+      "name": "stage5",
+      "configurePreset": "stage5"
+    }
+  ]
+}

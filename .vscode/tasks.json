@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Project",
+            "type": "cmake",
+            "command": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Build the selected CMake project"
+        },
+        {
+            "label": "Flash to STM32",
+            "type": "shell",
+            "command": "openocd",
+            "args": [
+                "-f",
+                "${workspaceFolder}/tools/openocd-stlink.cfg",
+                "-c",
+                "program ${command:cmake.launchTargetPath} verify reset exit"
+            ],
+            "dependsOn": "Build Project",
+            "problemMatcher": [],
+            "detail": "Flash firmware to STM32 using OpenOCD and ST-Link"
+        },
+        {
+            "label": "Clean Build",
+            "type": "cmake",
+            "command": "clean",
+            "problemMatcher": [],
+            "detail": "Clean build artifacts"
+        }
+    ]
+}

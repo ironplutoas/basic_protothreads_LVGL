@@ -1,0 +1,25 @@
+# ninja log v7
+13	70	7981399939479954	clean	8f7703e5a0f0ce8b
+26	2086	7981399944246219	project/main/CMakeFiles/stm32_lvgl_learning.dir/Core/Src/main.c.obj	76d29c496cae34dd
+106	2351	7981399945062893	project/main/CMakeFiles/stm32_lvgl_learning.dir/Core/Src/stm32f4xx_it.c.obj	c0637d96d64d8efc
+431	2789	7981399948309331	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	6d3225a4e68b8a66
+186	2919	7981399945856637	project/main/CMakeFiles/stm32_lvgl_learning.dir/Core/Src/stm32f4xx_hal_msp.c.obj	aa5c58c861a514a2
+259	3075	7981399946586577	project/main/CMakeFiles/stm32_lvgl_learning.dir/Drivers/Src/board_uart.c.obj	da6e5a71f10a939a
+338	3173	7981399947374237	project/main/CMakeFiles/stm32_lvgl_learning.dir/App/Src/app_stage.c.obj	d4570679a0e797ca
+536	3266	7981399949356075	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	a81f0bc34227e8ee
+639	3423	7981399950391297	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj	a4a59abae90bb7e
+985	3655	7981399953842524	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj	48c8f117524591ad
+753	3868	7981399951528851	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj	f08d3ce3662d1f66
+2352	4564	7981399967510782	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj	8897664dcdd4fac9
+2790	5017	7981399971892102	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj	5cdf438993601ac9
+3869	5223	7981399982692494	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/startup_stm32f407xx.s.obj	9dee7a4b99a5507a
+2092	5240	7981399964917075	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj	2f028f80fc13dd06
+3078	5343	7981399974772423	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj	3a2cc57f361c5ef0
+2920	5380	7981399973191142	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj	a5b95bd918900a72
+3267	5424	7981399976665989	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	b3c38544f2448c76
+3176	5460	7981399975748426	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	653b4c28c35440a0
+3656	5735	7981399980551436	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/Src/system_stm32f4xx.c.obj	3cb2ca809a8d3545
+3424	5771	7981399978245255	project/main/CMakeFiles/stm32_lvgl_learning.dir/__/__/resources/hal/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj	123a09ec9c8e79a4
+5771	10499	7981400001707721	project/main/stm32_lvgl_learning	7d91d93fcaefd52e
+22	619	7981400726177712	project/main/CMakeFiles/stm32_lvgl_learning.dir/App/Src/app_stage.c.obj	d4570679a0e797ca
+621	1781	7981400732173901	project/main/stm32_lvgl_learning	7d91d93fcaefd52e
