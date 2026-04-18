@@ -11,6 +11,7 @@ set(PROJECT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(ROOT_DIR ${PROJECT_DIR}/../..)
 set(HAL_DIR ${ROOT_DIR}/resources/hal)
 set(LVGL_DIR ${ROOT_DIR}/resources/lvgl)
+set(PROTOTHREADS_DIR ${ROOT_DIR}/resources/protothreads)
 set(LINKER_SCRIPT ${PROJECT_DIR}/STM32F407ZGTx_FLASH.ld)
 
 if(NOT DEFINED APP_STAGE)
@@ -25,6 +26,7 @@ set(APP_SOURCES
     ${PROJECT_DIR}/Drivers/Src/fsmc_lcd.c
     ${PROJECT_DIR}/App/Src/app_stage.c
     ${PROJECT_DIR}/App/Src/stage4_lvgl.c
+    ${PROJECT_DIR}/App/Src/stage5_boot_pt.c
 )
 
 set(HAL_SOURCES
@@ -72,6 +74,7 @@ target_include_directories(${TARGET_NAME} PRIVATE
     ${HAL_DIR}/STM32F4xx_HAL_Driver/Inc/Legacy
     ${LVGL_DIR}
     ${LVGL_DIR}/src
+    ${PROTOTHREADS_DIR}
 )
 
 target_compile_definitions(${TARGET_NAME} PRIVATE

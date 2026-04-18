@@ -4,6 +4,7 @@
 #include "board_uart.h"
 #include "fsmc_lcd.h"
 #include "stage4_lvgl.h"
+#include "stage5_boot_pt.h"
 
 static uint32_t s_last_tick = 0U;
 static uint8_t s_stage_banner_sent = 0U;
@@ -26,8 +27,10 @@ static void stage_send_banner(void)
     board_uart_write("\r\n[stage3] fsmc lcd bring-up running.\r\n");
 #elif APP_STAGE == 4
     board_uart_write("\r\n[stage4] lvgl hello running.\r\n");
+#elif APP_STAGE == 5
+    board_uart_write("\r\n[stage5] boot animation + protothreads running.\r\n");
 #else
-    board_uart_write("\r\n[stage5] boot animation + protothreads placeholder.\r\n");
+    board_uart_write("\r\n[stageX] unsupported stage value.\r\n");
 #endif
 #endif
 }
@@ -56,6 +59,15 @@ void app_stage_init(void)
     else
     {
         board_uart_write("[stage4] lcd init failed\r\n");
+    }
+#elif APP_STAGE == 5
+    if (fsmc_lcd_init() == HAL_OK)
+    {
+        stage5_boot_pt_init();
+    }
+    else
+    {
+        board_uart_write("[stage5] lcd init failed\r\n");
     }
 #endif
 
@@ -92,6 +104,8 @@ void app_stage_loop(void)
     }
 #elif APP_STAGE == 4
     stage4_lvgl_loop();
+#elif APP_STAGE == 5
+    stage5_boot_pt_loop();
 #else
     if (s_stage_banner_sent == 0U)
     {
