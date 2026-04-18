@@ -9,6 +9,7 @@
 #define HAL_PWR_MODULE_ENABLED
 #define HAL_FLASH_MODULE_ENABLED
 #define HAL_UART_MODULE_ENABLED
+#define HAL_SRAM_MODULE_ENABLED
 
 #define HSE_VALUE                8000000U
 #define HSI_VALUE               16000000U
@@ -41,6 +42,8 @@ void assert_failed(uint8_t *file, uint32_t line);
 #include "stm32f4xx_hal_flash_ramfunc.h"
 #include "stm32f4xx_hal_pwr.h"
 #include "stm32f4xx_hal_pwr_ex.h"
+#include "stm32f4xx_hal_sram.h"
 #include "stm32f4xx_hal_uart.h"
+#include "stm32f4xx_ll_fsmc.h"
 
 #endif /* __STM32F4xx_HAL_CONF_H */

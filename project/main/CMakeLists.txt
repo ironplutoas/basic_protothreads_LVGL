@@ -21,6 +21,7 @@ set(APP_SOURCES
     ${PROJECT_DIR}/Core/Src/stm32f4xx_it.c
     ${PROJECT_DIR}/Core/Src/stm32f4xx_hal_msp.c
     ${PROJECT_DIR}/Drivers/Src/board_uart.c
+    ${PROJECT_DIR}/Drivers/Src/fsmc_lcd.c
     ${PROJECT_DIR}/App/Src/app_stage.c
 )
 
@@ -37,7 +38,9 @@ set(HAL_SOURCES
     ${HAL_DIR}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
     ${HAL_DIR}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
     ${HAL_DIR}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
+    ${HAL_DIR}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c
     ${HAL_DIR}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
+    ${HAL_DIR}/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c
 )
 
 set(CMSIS_SOURCES
