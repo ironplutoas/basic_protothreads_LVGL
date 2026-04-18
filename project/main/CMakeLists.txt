@@ -10,6 +10,7 @@ set(TARGET_NAME stm32_lvgl_learning)
 set(PROJECT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(ROOT_DIR ${PROJECT_DIR}/../..)
 set(HAL_DIR ${ROOT_DIR}/resources/hal)
+set(LVGL_DIR ${ROOT_DIR}/resources/lvgl)
 set(LINKER_SCRIPT ${PROJECT_DIR}/STM32F407ZGTx_FLASH.ld)
 
 if(NOT DEFINED APP_STAGE)
@@ -23,6 +24,7 @@ set(APP_SOURCES
     ${PROJECT_DIR}/Drivers/Src/board_uart.c
     ${PROJECT_DIR}/Drivers/Src/fsmc_lcd.c
     ${PROJECT_DIR}/App/Src/app_stage.c
+    ${PROJECT_DIR}/App/Src/stage4_lvgl.c
 )
 
 set(HAL_SOURCES
@@ -43,6 +45,13 @@ set(HAL_SOURCES
     ${HAL_DIR}/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c
 )
 
+if(APP_STAGE GREATER_EQUAL 4)
+    file(GLOB_RECURSE LVGL_SOURCES CONFIGURE_DEPENDS
+        ${LVGL_DIR}/src/*.c
+    )
+    list(APPEND APP_SOURCES ${LVGL_SOURCES})
+endif()
+
 set(CMSIS_SOURCES
     ${HAL_DIR}/Src/system_stm32f4xx.c
     ${HAL_DIR}/startup_stm32f407xx.s
@@ -61,6 +70,8 @@ target_include_directories(${TARGET_NAME} PRIVATE
     ${HAL_DIR}/Include
     ${HAL_DIR}/STM32F4xx_HAL_Driver/Inc
     ${HAL_DIR}/STM32F4xx_HAL_Driver/Inc/Legacy
+    ${LVGL_DIR}
+    ${LVGL_DIR}/src
 )
 
 target_compile_definitions(${TARGET_NAME} PRIVATE
@@ -68,6 +79,12 @@ target_compile_definitions(${TARGET_NAME} PRIVATE
     USE_HAL_DRIVER
     APP_STAGE=${APP_STAGE}
 )
+
+if(APP_STAGE GREATER_EQUAL 4)
+    target_compile_definitions(${TARGET_NAME} PRIVATE
+        LV_CONF_INCLUDE_SIMPLE
+    )
+endif()
 
 target_link_options(${TARGET_NAME} PRIVATE
     -T${LINKER_SCRIPT}

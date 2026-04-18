@@ -33,15 +33,10 @@ static void lcd_write_data8(uint8_t data)
     LCD_BUS->RAM8 = data;
 }
 
-static void lcd_write_data16(uint16_t data)
+static void lcd_write_pixel_rgb565(uint16_t rgb565)
 {
-    LCD_BUS->RAM16 = data;
-}
-
-static void lcd_write_color(uint16_t rgb565)
-{
-    uint16_t bus_color = (uint16_t)((rgb565 >> 8) | (rgb565 << 8));
-    lcd_write_data16(bus_color);
+    lcd_write_data8((uint8_t)(rgb565 >> 8));
+    lcd_write_data8((uint8_t)(rgb565 & 0xFFU));
 }
 
 static void lcd_write_cmd_data8(uint8_t cmd, uint8_t data)
@@ -244,11 +239,11 @@ HAL_StatusTypeDef fsmc_lcd_init(void)
 
     lcd_hard_reset();
     lcd_init_sequence();
+    s_lcd_ready = 1U;
     fsmc_lcd_fill_color(LCD_COLOR_WHITE);
 
     HAL_GPIO_WritePin(LCD_BL_PORT, LCD_BL_PIN, GPIO_PIN_SET);
 
-    s_lcd_ready = 1U;
     return HAL_OK;
 }
 
@@ -265,6 +260,49 @@ void fsmc_lcd_fill_color(uint16_t rgb565)
     lcd_set_address_window(0U, 0U, (uint16_t)(LCD_WIDTH - 1U), (uint16_t)(LCD_HEIGHT - 1U));
     for (i = 0U; i < pixel_count; ++i)
     {
-        lcd_write_color(rgb565);
+        lcd_write_pixel_rgb565(rgb565);
+    }
+}
+
+void fsmc_lcd_write_area_rgb565(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, const uint16_t *pixels)
+{
+    uint32_t i;
+    uint32_t pixel_count;
+    uint16_t width;
+    uint16_t height;
+
+    if (s_lcd_ready == 0U || pixels == NULL)
+    {
+        return;
+    }
+
+    if (x1 > x2 || y1 > y2)
+    {
+        return;
+    }
+
+    if (x1 >= LCD_WIDTH || y1 >= LCD_HEIGHT)
+    {
+        return;
+    }
+
+    if (x2 >= LCD_WIDTH)
+    {
+        x2 = (uint16_t)(LCD_WIDTH - 1U);
+    }
+
+    if (y2 >= LCD_HEIGHT)
+    {
+        y2 = (uint16_t)(LCD_HEIGHT - 1U);
+    }
+
+    width = (uint16_t)(x2 - x1 + 1U);
+    height = (uint16_t)(y2 - y1 + 1U);
+    pixel_count = (uint32_t)width * (uint32_t)height;
+
+    lcd_set_address_window(x1, y1, x2, y2);
+    for (i = 0U; i < pixel_count; ++i)
+    {
+        lcd_write_pixel_rgb565(pixels[i]);
     }
 }

@@ -12,5 +12,6 @@
 
 HAL_StatusTypeDef fsmc_lcd_init(void);
 void fsmc_lcd_fill_color(uint16_t rgb565);
+void fsmc_lcd_write_area_rgb565(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, const uint16_t *pixels);
 
 #endif /* __FSMC_LCD_H */

@@ -3,6 +3,7 @@
 #include "main.h"
 #include "board_uart.h"
 #include "fsmc_lcd.h"
+#include "stage4_lvgl.h"
 
 static uint32_t s_last_tick = 0U;
 static uint8_t s_stage_banner_sent = 0U;
@@ -24,7 +25,7 @@ static void stage_send_banner(void)
 #elif APP_STAGE == 3
     board_uart_write("\r\n[stage3] fsmc lcd bring-up running.\r\n");
 #elif APP_STAGE == 4
-    board_uart_write("\r\n[stage4] lvgl hello stage placeholder.\r\n");
+    board_uart_write("\r\n[stage4] lvgl hello running.\r\n");
 #else
     board_uart_write("\r\n[stage5] boot animation + protothreads placeholder.\r\n");
 #endif
@@ -46,6 +47,15 @@ void app_stage_init(void)
     else
     {
         board_uart_write("[stage3] lcd init failed\r\n");
+    }
+#elif APP_STAGE == 4
+    if (fsmc_lcd_init() == HAL_OK)
+    {
+        stage4_lvgl_init();
+    }
+    else
+    {
+        board_uart_write("[stage4] lcd init failed\r\n");
     }
 #endif
 
@@ -80,6 +90,8 @@ void app_stage_loop(void)
         board_uart_write("[stage3] color cycle\r\n");
         s_last_tick = now;
     }
+#elif APP_STAGE == 4
+    stage4_lvgl_loop();
 #else
     if (s_stage_banner_sent == 0U)
     {
